@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <!-- 使用th:text属性输出 -->
+    <div th:text="${message}" >hello world</div>
+    
+	application：<br/>
+	<div>
+	    编号：<label th:text="${application.user3.id}"></label><br/>
+	    用户名：<label th:text="${application.user3.username}"></label><br/>
+	    密码：<label th:text="${application.user3.password}"></label><br/>
+	</div>
+	<br/>
+	
+    request： <br/>
+	<div th:object="${user1}">
+	    编号： <label th:text="*{id}"></label><br/>
+	    用户名：<label th:text="*{username}"></label> <br/>
+	  <p>FirstName: <span th:text="*{username.split(' ')[0]}">Jack</span></p>
+      <p>LastName: <span th:text="*{username.split(' ')[1]}">Li</span></p>
+	    密码：<label th:text="*{password}"></label><br/>
+	</div>
+	<br/>
+	
+	session：<br/>
+	<div th:object="${session.user2}">
+	    编号： <label th:text="*{id}"></label><br/>
+	    用户名：<label th:text="*{username}"></label> <br/>
+	    密码：<label th:text="*{password}"></label><br/>
+	</div>
+	
+	获取请求URL：<span th:text="${#request.getRequestURL()}"></span><br />
+	获取会话超时时间：<span th:text="${#session.getMaxInactiveInterval()}"></span><br />
+	获取服务器信息：<span th:text="${#servletContext.getServerInfo()}"></span>
+	
+	<!-- 可以在调用对象或者方法的点（.）前面，使用问号（?）来判断null -->
+	<br>
+   	 编号：<span th:text="${session?.user2?.id}"></span>
+   	 
+   	 <br>
+   	 <!-- 如果条件为真，执行标签内的内容 -->
+	<div th:if="${false}">
+	    天天18
+	</div>
+	
+	<!-- 如果添加为假，执行标签内的内容 -->
+	<div th:unless="${false}">
+	    别做梦
+	</div>
+	
+   	 <br>
+   	 <div th:if="${true or false}">
+	    真的18岁
+	</div>
+	
+	<div th:if="${not false}">
+	    真的别做梦
+	</div>
+	
+   	 <br>
+	<span th:text="true ? '今年不是18岁' : '总算清醒了'"></span>
+	
+   	 <br>
+	<div th:switch="${21}">
+	    <div th:case="16">我今年16岁</div>
+	    <div th:case="17">我今年17岁</div>
+	    <div th:case="18">我今年18岁</div>
+	    <div th:case="*">我年年18岁</div>
+	</div>
+
+	<!-- <h3>需求：输出用户信息，声明状态对象</h3>
+	<table border="1" cellspacing="0">
+	    <tr>
+	        <td>当前迭代索引</td>
+	        <td>当前迭代序号</td>
+	        <td>编号</td>
+	        <td>姓名</td>
+	        <td>密码</td>
+	    </tr>
+	    <tr th:each="user, iter:${users}">
+	        <td th:text="${iter.index}"></td>
+	        <td th:text="${iter.count}"></td>
+	        <td th:text="${user.id}"></td>
+	        <td th:text="${user.username}"></td>
+	        <td th:text="${user.password}"></td>
+	    </tr>
+	</table> -->
+   	 
+</body>
+</html>
