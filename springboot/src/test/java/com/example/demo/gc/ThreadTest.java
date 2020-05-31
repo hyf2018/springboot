@@ -1,4 +1,4 @@
-package com.example.demo.test.gc;
+package com.example.demo.gc;
 
 public class ThreadTest implements Runnable {
 

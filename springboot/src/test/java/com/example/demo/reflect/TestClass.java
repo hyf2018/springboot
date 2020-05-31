@@ -1,4 +1,4 @@
-package com.example.demo.test.reflect;
+package com.example.demo.reflect;
 
 public class TestClass {
 

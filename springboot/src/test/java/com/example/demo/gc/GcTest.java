@@ -1,4 +1,4 @@
-package com.example.demo.test.gc;
+package com.example.demo.gc;
 
 public class GcTest {
 	public static void main(String[] args) {
