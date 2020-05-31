@@ -20,7 +20,7 @@ public class BlockingQueueTest {
 
 	private static BlockingQueue<String> queue = new ArrayBlockingQueue<>(5);
 
-	//生产者
+	// 生产者
 	private static class Producer extends Thread {
 		@Override
 		public void run() {
@@ -33,31 +33,35 @@ public class BlockingQueueTest {
 		}
 	}
 
-	//消费者
+	// 消费者
 	private static class Consumer extends Thread {
 		@Override
 		public void run() {
 			try {
+//				Retrieves and removes the head of this queue, waiting if necessary until an element becomes available.
 				String product = queue.take();
+				
+//				Retrieves and removes the head of this queue, or returns null if this queue is empty.
+//				queue.poll();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 			System.out.print("consume..");
 		}
 	}
-	
+
 	public static void main(String[] args) {
-	    for (int i = 0; i < 2; i++) {
-	        Producer producer = new Producer();
-	        producer.start();
-	    }
-	    for (int i = 0; i < 5; i++) {
-	        Consumer consumer = new Consumer();
-	        consumer.start();
-	    }
-	    for (int i = 0; i < 3; i++) {
-	        Producer producer = new Producer();
-	        producer.start();
-	    }
+		for (int i = 0; i < 2; i++) {
+			Producer producer = new Producer();
+			producer.start();
+		}
+		for (int i = 0; i < 5; i++) {
+			Consumer consumer = new Consumer();
+			consumer.start();
+		}
+		for (int i = 0; i < 3; i++) {
+			Producer producer = new Producer();
+			producer.start();
+		}
 	}
 }

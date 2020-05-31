@@ -28,6 +28,13 @@ public class JoinExample {
 		public void run() {
 			try {
 				a.join();
+				
+//				线程休眠不会释放锁
+//				a.sleep(millis);
+				
+//				线程让步不会释放锁
+//				a.yield();
+				
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}

@@ -2,6 +2,7 @@ package com.example.demo.test.Thread;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -30,12 +31,14 @@ synchronized 中的锁是非公平的，ReentrantLock 默认情况下也是非�
 public class LockExample {
 
 	/*
-	 * A ReentrantLock由线程拥有 ，最后成功锁定，但尚未解锁。 调用lock的线程将返回，成功获取锁，当锁不是由另一个线程拥有。
+	 * A ReentrantLock由线程拥有 ，最后成功锁定，但尚未解锁。当锁不是由另一个线程拥有, 调用lock的线程将返回，成功获取锁。
 	 * 如果当前线程已经拥有该锁，该方法将立即返回。 这可以使用方法isHeldByCurrentThread()和getHoldCount()进行检查。
 	 */
 	private Lock lock = new ReentrantLock();
 
 	public void func() throws Exception {
+		Condition cond = lock.newCondition();
+//		cond.await(time, unit)
 		// 获得锁。
 		lock.lock();
 
@@ -46,7 +49,8 @@ public class LockExample {
 				System.out.print(i + " ");
 			}
 		} finally {
-			lock.unlock(); // 确保释放锁，从而避免发生死锁。
+			// 确保释放锁，从而避免发生死锁。
+			lock.unlock(); 
 		}
 	}
 
