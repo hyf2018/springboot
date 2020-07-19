@@ -33,10 +33,10 @@ public class ThreadTest implements Runnable {
             long[] a = new long[2000000];
             System.out.println("This is Thread " + num + "，Thread is " + this.toString() + "，Array length is " + a.length);
         } else if(num == 2) {
-            // 老年代128M(-Xms256m -Xmx256m，OldSize=256-128)
-            // ~76M(8*10000000+16+8+padding)
+            // 老年代384M(-Xms512m -Xmx512m，OldSize=512-128)
+            // ~153M(8*20000000+16+8+padding)
             // 在64位的系统中, 数组占用内存为: 型别占用内存 * 数组长度 + 16（object overhead占用16bytes）+ 8（数组长度）+ padding
-            long[] a = new long[10000000];
+            long[] a = new long[20000000];
             System.out.println("This is Thread " + num + "，Thread is " + this.toString() + "，Array length is " + a.length);
         }
     }

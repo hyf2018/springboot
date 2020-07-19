@@ -41,6 +41,7 @@ public class LockExample {
 //		cond.await(time, unit)
 		// 获得锁。
 		lock.lock();
+//		lock.lockInterruptibly();
 
 		try {
 			System.out.println("LockExample.func()");

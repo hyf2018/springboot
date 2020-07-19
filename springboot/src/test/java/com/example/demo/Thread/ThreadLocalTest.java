@@ -45,6 +45,8 @@ public class ThreadLocalTest {
 		
 		for (Thread t : threads) {
 			t.start();
+			threadId.remove();
 		}
+		
 	}
 }

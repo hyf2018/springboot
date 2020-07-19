@@ -13,7 +13,8 @@ import java.util.Map;
 final 关键字修饰的基本数据类型
 String
 枚举类型
-Number 部分子类，如 Long 和 Double 等数值包装类型，BigInteger 和 BigDecimal 等大数据类型。但同为 Number 的原子类 AtomicInteger 和 AtomicLong 则是可变的。
+Number 部分子类，如 Long 和 Double 等数值包装类型，BigInteger 和 BigDecimal 等大数据类型。
+但同为 Number 的原子类 AtomicInteger 和 AtomicLong 则是可变的。
 对于集合类型，可以使用 Collections.unmodifiableXXX() 方法来获取一个不可变的集合。
 */
 

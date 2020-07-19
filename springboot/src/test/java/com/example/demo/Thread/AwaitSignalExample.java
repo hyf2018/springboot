@@ -22,6 +22,7 @@ public class AwaitSignalExample {
 
 	public void before() {
 		lock.lock();
+//		boolean tryLock = lock.tryLock();
 		try {
 			System.out.println("before");
 //            唤醒所有等待线程。 
